@@ -68,3 +68,12 @@
 
 ### Production mode
 > coming soon
+
+## Unit tests
+> To run the unit tests, first install pytest:
+
+    pip install pytest
+
+> Then run:
+
+    py.test
