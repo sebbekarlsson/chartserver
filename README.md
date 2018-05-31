@@ -13,4 +13,4 @@
 
 > Will give you this image:
 
-<img width='200px' src='images/barchart.png'/>
+<img width='360px' src='images/barchart.png'/>
