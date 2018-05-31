@@ -15,6 +15,11 @@
 
 <img width='360px' src='images/barchart.png'/>
 
+> You can also choose a size on the image by adding these arguments to the
+> request:
+
+    GET ...?w=<width>&h=<height>
+
 ## Installing & Running
 ### Development mode
 > First run the setup:

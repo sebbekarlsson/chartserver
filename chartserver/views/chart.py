@@ -1,4 +1,4 @@
-from flask import Blueprint, send_file, send_from_directory
+from flask import Blueprint, send_file, send_from_directory, request
 from chartserver.charts import create_bar_chart
 import base64
 import os
@@ -14,8 +14,13 @@ bp = Blueprint(
 
 @bp.route('/bar/<xpoints>/<ypoints>')
 def show(xpoints, ypoints):
+    width = request.args.get('w')
+    height = request.args.get('h')
+
     directory = '/tmp/'
-    filename = base64.b64encode(xpoints + ypoints) + '.png'
+    filename = base64.b64encode(
+        xpoints + ypoints + str(width) + str(height)
+    ) + '.png'
     fullpath = directory + filename
 
     kwargs = dict(mimetype='image/png', attachment_filename=filename)
@@ -29,7 +34,9 @@ def show(xpoints, ypoints):
     chart_io = create_bar_chart(
         fullpath,
         xpoints,
-        ypoints
+        ypoints,
+        width=int(width) if width else 640,
+        height=int(height) if height else 480
     )
 
     return send_file(chart_io, **kwargs)
