@@ -20,6 +20,10 @@
 
     GET ...?w=<width>&h=<height>
 
+> You can also choose the color on your bars by adding these arguments:
+
+    GET ...?c=blue,green,black,yellow
+
 ## Installing & Running
 ### Development mode
 > First run the setup:

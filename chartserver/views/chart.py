@@ -16,16 +16,18 @@ bp = Blueprint(
 def show(xpoints, ypoints):
     width = request.args.get('w')
     height = request.args.get('h')
+    color = request.args.get('c')
+    cached = True if not request.args.get('no_cache') else False
 
     directory = '/tmp/'
     filename = base64.b64encode(
-        xpoints + ypoints + str(width) + str(height)
+        xpoints + ypoints + str(width) + str(height) + str(color)
     ) + '.png'
     fullpath = directory + filename
 
     kwargs = dict(mimetype='image/png', attachment_filename=filename)
 
-    if os.path.isfile(fullpath):
+    if os.path.isfile(fullpath) and cached:
         return send_from_directory(directory, filename, **kwargs)
 
     xpoints = [float(x) if x.isdigit() else x for x in xpoints.split(',')]
@@ -36,7 +38,8 @@ def show(xpoints, ypoints):
         xpoints,
         ypoints,
         width=int(width) if width else 640,
-        height=int(height) if height else 480
+        height=int(height) if height else 480,
+        color=color.split(',') if color else None
     )
 
     return send_file(chart_io, **kwargs)

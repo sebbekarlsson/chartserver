@@ -3,12 +3,21 @@ import matplotlib.pyplot as plt
 import io
 
 
-def create_bar_chart(filename, xpoints, ypoints, width=640, height=480):
+def create_bar_chart(
+    filename,
+    xpoints,
+    ypoints,
+    width=640,
+    height=480,
+    color=None
+):
     dpi = 300
     plt.rcParams["figure.figsize"] = [width / dpi, height / dpi]
     y_pos = np.arange(len(xpoints))
 
-    plt.bar(y_pos, ypoints)
+    print(width, height)
+
+    plt.bar(y_pos, ypoints, color=color)
 
     plt.xticks(y_pos, xpoints)
 
