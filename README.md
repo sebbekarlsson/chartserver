@@ -49,6 +49,11 @@
 
     GET ...?w=<width>&h=<height>&color=red,green,blue&shadow=1
 
+## Cache
+> Everything is cached, to disable cache; add this argument:
+
+    GET ...?no_cache=1
+
 ## Installing & Running
 ### Development mode
 > First run the setup:
