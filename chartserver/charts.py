@@ -15,7 +15,6 @@ def create_bar_chart(
     ylabel=''
 ):
     dpi = (width * height) / 3200
-    print(dpi)
     plt.rcParams["figure.figsize"] = [width / dpi, height / dpi]
     y_pos = np.arange(len(xpoints))
 
