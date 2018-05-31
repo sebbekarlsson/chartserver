@@ -24,6 +24,14 @@
 
     GET ...?c=blue,green,black,yellow
 
+> You can also put labels on your chart, like this:
+
+    GET ...?title=Mytitle&ylabel=points&xlabel=elements
+
+> Will look like this:
+
+<img width='360px' src='images/barchart-labels.png'/>
+
 ## Installing & Running
 ### Development mode
 > First run the setup:

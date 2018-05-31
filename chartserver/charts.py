@@ -9,17 +9,23 @@ def create_bar_chart(
     ypoints,
     width=640,
     height=480,
-    color=None
+    color=None,
+    title='',
+    xlabel='',
+    ylabel=''
 ):
-    dpi = 300
+    dpi = (width * height) / 3200
+    print(dpi)
     plt.rcParams["figure.figsize"] = [width / dpi, height / dpi]
     y_pos = np.arange(len(xpoints))
-
-    print(width, height)
 
     plt.bar(y_pos, ypoints, color=color)
 
     plt.xticks(y_pos, xpoints)
+
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
 
     buf = io.BytesIO()
 
@@ -29,7 +35,6 @@ def create_bar_chart(
     plt.savefig(buf, **kwargs)
 
     buf.seek(0)
-
     plt.savefig(filename, **kwargs)
 
     return buf

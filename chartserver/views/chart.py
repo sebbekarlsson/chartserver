@@ -17,11 +17,15 @@ def show(xpoints, ypoints):
     width = request.args.get('w')
     height = request.args.get('h')
     color = request.args.get('c')
+    title = request.args.get('title')
+    xlabel = request.args.get('xlabel')
+    ylabel = request.args.get('ylabel')
     cached = True if not request.args.get('no_cache') else False
 
     directory = '/tmp/'
     filename = base64.b64encode(
-        xpoints + ypoints + str(width) + str(height) + str(color)
+        xpoints + ypoints + str(width) + str(height) + str(color) + str(title)
+        + str(xlabel) + str(ylabel)
     ) + '.png'
     fullpath = directory + filename
 
@@ -39,7 +43,10 @@ def show(xpoints, ypoints):
         ypoints,
         width=int(width) if width else 640,
         height=int(height) if height else 480,
-        color=color.split(',') if color else None
+        color=color.split(',') if color else None,
+        title=title if title else '',
+        xlabel=xlabel if xlabel else '',
+        ylabel=ylabel if ylabel else ''
     )
 
     return send_file(chart_io, **kwargs)
