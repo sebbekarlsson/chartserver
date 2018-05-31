@@ -3,6 +3,20 @@ import matplotlib.pyplot as plt
 import io
 
 
+FORMAT = 'png'
+DPI_DIV = 3200
+
+
+def write_image_buffer_and_save(plt, buf, filename, dpi):
+    plt.draw()
+    plt.savefig(buf, format=FORMAT, dpi=dpi)
+
+    buf.seek(0)
+    plt.savefig(filename, format=FORMAT, dpi=dpi)
+
+    return buf
+
+
 def create_bar_chart(
     filename,
     xpoints,
@@ -14,7 +28,7 @@ def create_bar_chart(
     xlabel='',
     ylabel=''
 ):
-    dpi = (width * height) / 3200
+    dpi = (width * height) / DPI_DIV
     plt.rcParams["figure.figsize"] = [width / dpi, height / dpi]
     y_pos = np.arange(len(xpoints))
 
@@ -28,15 +42,7 @@ def create_bar_chart(
 
     buf = io.BytesIO()
 
-    kwargs = dict(format='png', dpi=dpi)
-
-    plt.draw()
-    plt.savefig(buf, **kwargs)
-
-    buf.seek(0)
-    plt.savefig(filename, **kwargs)
-
-    return buf
+    return write_image_buffer_and_save(plt, buf, filename, dpi=dpi)
 
 
 def create_pie_chart(
@@ -49,7 +55,7 @@ def create_pie_chart(
     height=480,
     color=None
 ):
-    dpi = (width * height) / 3200
+    dpi = (width * height) / DPI_DIV
     plt.rcParams["figure.figsize"] = [width / dpi, height / dpi]
 
     fig1, ax1 = plt.subplots()
@@ -63,12 +69,4 @@ def create_pie_chart(
 
     buf = io.BytesIO()
 
-    kwargs = dict(format='png', dpi=dpi)
-
-    plt.draw()
-    plt.savefig(buf, **kwargs)
-
-    buf.seek(0)
-    plt.savefig(filename, **kwargs)
-
-    return buf
+    return write_image_buffer_and_save(plt, buf, filename, dpi=dpi)
