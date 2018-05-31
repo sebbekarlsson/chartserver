@@ -30,7 +30,7 @@
 
 > Will look like this:
 
-<img width='360px' src='images/barchart-labels.png'/>
+<img width='360px' src='images/barchart-label.png'/>
 
 ## Installing & Running
 ### Development mode
