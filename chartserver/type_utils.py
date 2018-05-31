@@ -2,7 +2,7 @@ def is_float(x):
     try:
         x = float(x)
         return True
-    except TypeError:
+    except Exception:
         pass
 
     return False
