@@ -1,8 +1,8 @@
 from flask import Blueprint, send_file, send_from_directory, request
+import os
 from chartserver.charts import create_bar_chart, create_pie_chart
 from chartserver.type_utils import is_float
 from chartserver.utils import create_base64_filename
-import os
 
 
 bp = Blueprint(
