@@ -32,6 +32,23 @@
 
 <img width='360px' src='images/barchart-label.png'/>
 
+### Pie chart
+> To retrieve a pie chart:
+
+    GET /chart/pie/<labels>/<sizes>
+
+> Example:
+
+    GET /chart/pie/python,javascript,golang/10,10,20
+
+> Will give you this image:
+
+<img width='360px' src='images/piechart.png'/>
+
+> You can also change `width`, `height`, `color`, `shadow`:
+
+    GET ...?w=<width>&h=<height>&color=red,green,blue&shadow=1
+
 ## Installing & Running
 ### Development mode
 > First run the setup:
