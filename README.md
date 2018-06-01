@@ -39,7 +39,7 @@
 
 > Example:
 
-    GET /chart/line/a,b,c/10,10,20?no_cache=1
+    GET /chart/line/a,b,c/10,10,20
 
 > It will look something like this:
 
