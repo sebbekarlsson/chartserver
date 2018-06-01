@@ -70,3 +70,29 @@ def create_pie_chart(
     buf = io.BytesIO()
 
     return write_image_buffer_and_save(plt, buf, filename, dpi=dpi)
+
+
+def create_line_chart(
+    filename,
+    xpoints,
+    ypoints,
+    width=640,
+    height=480,
+    color=None,
+    title='',
+    xlabel='',
+    ylabel=''
+):
+    dpi = (width * height) / DPI_DIV
+    plt.rcParams["figure.figsize"] = [width / dpi, height / dpi]
+
+    plt.plot(xpoints, ypoints, color=color)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.title(title)
+
+    plt.tight_layout()
+
+    buf = io.BytesIO()
+
+    return write_image_buffer_and_save(plt, buf, filename, dpi=dpi)

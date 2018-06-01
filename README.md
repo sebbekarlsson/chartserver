@@ -32,6 +32,19 @@
 
 <img width='360px' src='images/barchart-label.png'/>
 
+### Line chart
+> You can use the exact same arguments for the line chart, the route is:
+
+    GET /chart/line/<xpoints>/<ypoints>
+
+> Example:
+
+    GET /chart/line/a,b,c/10,10,20?no_cache=1
+
+> It will look something like this:
+
+<img width='360px' src='images/linechart.png'/>
+
 ### Pie chart
 > To retrieve a pie chart:
 
